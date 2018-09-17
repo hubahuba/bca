@@ -2,8 +2,9 @@
 
 namespace Ngungut\Bca\Console;
 
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Console\Command;
-use Ngungut\Bca\Bca;
+use Ngungut\Bca\Client;
 use Ngungut\Bca\Exception\BCAException;
 
 class BcaSandbox extends Command
@@ -29,10 +30,11 @@ class BcaSandbox extends Command
      */
     public function handle()
     {
-        $bca = new Bca;
+        $bca = new Client;
         try {
-            $bca->auth();
-        } catch (BCAException $e) {
+            $response = $bca->getBalance('BCAAPI2016', ['0201245680']);
+            dd($response);
+        } catch (ClientException|BCAException $e) {
             echo $e;
         }
     }

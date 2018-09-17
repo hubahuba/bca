@@ -11,17 +11,11 @@ class BcaServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/bca.php', 'bca');
-        $this->mergeConfigFrom(__DIR__ . '/../config/filesystems.php', 'filesystems');
-        $this->mergeConfigFrom(__DIR__ . '/../config/logging.php', 'logging');
+//        $this->mergeConfigFrom(__DIR__ . '/../config/filesystems.php', 'filesystems');
+//        $this->mergeConfigFrom(__DIR__ . '/../config/logging.php', 'logging');
 
         $this->publishes(array(
             __DIR__ . '/../config/bca.php' => config_path('bca.php'),
-        ));
-        $this->publishes(array(
-            __DIR__ . '/../config/filesystems.php' => config_path('filesystems.php'),
-        ));
-        $this->publishes(array(
-            __DIR__ . '/../config/logging.php' => config_path('logging.php'),
         ));
 
         $this->commands('ngungut.bca.init');
